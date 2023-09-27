@@ -15,20 +15,48 @@ export async function fetchData(url) {
   }
 }
 
-export async function fetchDataList(data) {
+export async function fetchDataSingleParam(data, propertyOne) {
   const dataList = [];
 
   try {
-    data.forEach(async (element) => {
-      const response = await fetch(element.url);
+    const fetchPromises = data.map(async (element) => {
+      const response = await fetch(element[propertyOne]);
 
       if (!response.ok) {
-        // Handle non-successful responses
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      dataList.push(await response.json());
+      return response.json();
     });
+
+    const fetchedData = await Promise.all(fetchPromises);
+
+    dataList.push(...fetchedData);
+
+    return dataList;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+}
+
+export async function fetchDataDoubleParam(data, propertyOne, propertyTwo) {
+  const dataList = [];
+
+  try {
+    const fetchPromises = data.map(async (element) => {
+      const response = await fetch(element[propertyOne][propertyTwo]);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      return response.json();
+    });
+
+    const fetchedData = await Promise.all(fetchPromises);
+
+    dataList.push(...fetchedData);
 
     return dataList;
   } catch (error) {

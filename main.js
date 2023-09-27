@@ -1,4 +1,8 @@
-import { fetchData, fetchDataList } from "./helpers/fetchData";
+import {
+  fetchData,
+  fetchDataSingleParam,
+  fetchDataDoubleParam,
+} from "./helpers/fetchData";
 import "./style.css";
 
 async function main() {
@@ -7,8 +11,19 @@ async function main() {
     "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0"
   );
   console.log(pokeListData);
-  const pokeListDetails = await fetchDataList(pokeListData.results);
+
+  const pokeListDetails = await fetchDataSingleParam(
+    pokeListData.results,
+    "url"
+  );
   console.log(pokeListDetails);
+
+  const pokeSpeciesData = await fetchDataDoubleParam(
+    pokeListDetails,
+    "species",
+    "url"
+  );
+  console.log(pokeSpeciesData);
 }
 
 main();
