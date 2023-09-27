@@ -1,3 +1,4 @@
+import { createPokemonCard } from "./classObjects/pokemonCard";
 import {
   fetchData,
   fetchDataSingleParam,
@@ -31,6 +32,23 @@ async function main() {
     "url"
   );
   console.log(pokeEvolutionData);
+
+  const pokemonCardList = createPokemonCard(
+    pokeListDetails.results,
+    pokeSpeciesData.results
+  );
+
+  pokemonCardList.forEach((element) => {
+    console.log(
+      element.getID() +
+        ":" +
+        element.getName() +
+        ": " +
+        element.getDescription() +
+        "\n" +
+        element.getType()
+    );
+  });
 }
 
 main();
