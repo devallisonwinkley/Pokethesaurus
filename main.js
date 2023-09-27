@@ -17,21 +17,21 @@ async function main() {
     pokeListData.results,
     "url"
   );
-  console.log(pokeListDetails);
+  //console.log(pokeListDetails);
 
   const pokeSpeciesData = await fetchDataDoubleParam(
     pokeListDetails.results,
     "species",
     "url"
   );
-  console.log(pokeSpeciesData);
+  //console.log(pokeSpeciesData);
 
   const pokeEvolutionData = await fetchDataDoubleParam(
     pokeSpeciesData.results,
     "evolution_chain",
     "url"
   );
-  console.log(pokeEvolutionData);
+  //console.log(pokeEvolutionData);
 
   const pokemonCardList = createPokemonCard(
     pokeListDetails.results,

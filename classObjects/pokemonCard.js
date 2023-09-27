@@ -4,7 +4,16 @@ export function createPokemonCard(pokemonData, speciesData) {
   pokemonData.forEach((element, i) => {
     const id = speciesData[i].id;
     const name = pokemonData[i].name;
-    const description = speciesData[i].flavor_text_entries[0].flavor_text;
+    let description = "";
+
+    for (const item of speciesData[i].flavor_text_entries) {
+      if (item.language.name === "en" && item.version.name === "red") {
+        description = item.flavor_text;
+
+        break;
+      }
+    }
+
     const imgUrl = pokemonData[i].sprites.front_default;
     const typeClass = [];
     for (const item of pokemonData[i].types) {
