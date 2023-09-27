@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(to right, #92fe9d 0%, #00c9ff 100%);
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+}
+
+input {
+  width: 60%;
+  margin-top: 1.5em;
+  margin-left: 7em;
+
+  padding: 1em;
+  border-radius: 10px;
+}
+
+input:focus {
+  outline: none;
+}
+
+img {
+  width: 150px;
+
+  position: absolute;
+  left: 20px;
+  top: -10px;
+
+  cursor: pointer;
+}
