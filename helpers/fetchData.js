@@ -15,12 +15,12 @@ export async function fetchData(url) {
   }
 }
 
-export async function fetchDataSingleParam(data, propertyOne) {
-  const dataList = [];
+export async function fetchDataSingleParam(data, paramOne) {
+  const dataList = new DataObject();
 
   try {
     const fetchPromises = data.map(async (element) => {
-      const response = await fetch(element[propertyOne]);
+      const response = await fetch(element[paramOne]);
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -31,7 +31,8 @@ export async function fetchDataSingleParam(data, propertyOne) {
 
     const fetchedData = await Promise.all(fetchPromises);
 
-    dataList.push(...fetchedData);
+    dataList.results.push(...fetchedData);
+    dataList.count = dataList.results.length;
 
     return dataList;
   } catch (error) {
@@ -40,12 +41,12 @@ export async function fetchDataSingleParam(data, propertyOne) {
   }
 }
 
-export async function fetchDataDoubleParam(data, propertyOne, propertyTwo) {
-  const dataList = [];
+export async function fetchDataDoubleParam(data, paramOne, paramTwo) {
+  const dataList = new DataObject();
 
   try {
     const fetchPromises = data.map(async (element) => {
-      const response = await fetch(element[propertyOne][propertyTwo]);
+      const response = await fetch(element[paramOne][paramTwo]);
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -56,11 +57,16 @@ export async function fetchDataDoubleParam(data, propertyOne, propertyTwo) {
 
     const fetchedData = await Promise.all(fetchPromises);
 
-    dataList.push(...fetchedData);
+    dataList.results.push(...fetchedData);
+    dataList.count = dataList.results.length;
 
     return dataList;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
   }
+}
+
+function DataObject() {
+  return { results: [], count: 0 };
 }

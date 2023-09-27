@@ -19,11 +19,18 @@ async function main() {
   console.log(pokeListDetails);
 
   const pokeSpeciesData = await fetchDataDoubleParam(
-    pokeListDetails,
+    pokeListDetails.results,
     "species",
     "url"
   );
   console.log(pokeSpeciesData);
+
+  const pokeEvolutionData = await fetchDataDoubleParam(
+    pokeSpeciesData.results,
+    "evolution_chain",
+    "url"
+  );
+  console.log(pokeEvolutionData);
 }
 
 main();
