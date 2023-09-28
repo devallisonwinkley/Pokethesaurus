@@ -24,7 +24,7 @@ async function main() {
     "species",
     "url"
   );
-  //console.log(pokeSpeciesData);
+  console.log(pokeSpeciesData);
 
   const pokeEvolutionData = await fetchDataDoubleParam(
     pokeSpeciesData.results,
@@ -43,10 +43,12 @@ async function main() {
       element.getID() +
         ":" +
         element.getName() +
-        ": " +
+        ":\n" +
         element.getDescription() +
         "\n" +
-        element.getType()
+        element.getType() +
+        "\n" +
+        element.getGroup()
     );
   });
 }
