@@ -4,7 +4,7 @@ import {
   fetchDataSingleParam,
   fetchDataDoubleParam,
 } from "./helpers/fetchData";
-import { cardBuilder } from "./html-builder/cardBuilder";
+import { cardBuilder, categoryBuilder } from "./html-builder/htmlBuilder";
 import "./style.css";
 
 const app = document.getElementById("app");
@@ -44,6 +44,8 @@ async function main() {
     const card = cardBuilder(element);
     app.appendChild(card);
   });
+
+  // categoryBuilder(app);
 }
 
 main();

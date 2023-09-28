@@ -22,7 +22,17 @@ export function createPokemonCard(pokemonData, speciesData) {
 
     const eggGroup = [];
     for (const item of speciesData[i].egg_groups) {
-      eggGroup.push(item.name);
+      if (
+        item.name === "water1" ||
+        item.name === "water2" ||
+        item.name === "water3"
+      ) {
+        eggGroup.push("water");
+      } else if (item.name === "no-eggs") {
+        eggGroup.push("none");
+      } else {
+        eggGroup.push(item.name);
+      }
     }
 
     const pokemon = new PokemonCard(

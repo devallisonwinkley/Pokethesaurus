@@ -56,3 +56,35 @@ export function cardBuilder(obj) {
 
   return card;
 }
+
+export function categoryBuilder(app) {
+  const pokemonType = [
+    "grass",
+    "poison",
+    "fire",
+    "flying",
+    "water",
+    "normal",
+    "electric",
+    "ground",
+    "fighting",
+    "psychic",
+    "rock",
+    "bug",
+  ];
+
+  const randomType = [];
+  while (randomType.length < 5) {
+    const randomNumber = Math.floor(Math.random() * pokemonType.length);
+    if (!randomType.includes(pokemonType[randomNumber])) {
+      randomType.push(pokemonType[randomNumber]);
+    }
+  }
+
+  randomType.forEach((element) => {
+    const category = document.createElement("section");
+    category.className = "category-section " + element;
+  });
+
+  return randomType;
+}
