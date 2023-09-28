@@ -1,10 +1,13 @@
-import { createPokemonCard } from "./classObjects/pokemonCard";
+import { createPokemonCard } from "./class-object/pokemonCard";
 import {
   fetchData,
   fetchDataSingleParam,
   fetchDataDoubleParam,
 } from "./helpers/fetchData";
+import { cardBuilder } from "./html-builder/cardBuilder";
 import "./style.css";
+
+const app = document.getElementById("app");
 
 async function main() {
   const pokeList = [];
@@ -39,17 +42,8 @@ async function main() {
   );
 
   pokemonCardList.forEach((element) => {
-    console.log(
-      element.getID() +
-        ":" +
-        element.getName() +
-        ":\n" +
-        element.getDescription() +
-        "\n" +
-        element.getType() +
-        "\n" +
-        element.getGroup()
-    );
+    const card = cardBuilder(element);
+    app.appendChild(card);
   });
 }
 

@@ -28,7 +28,7 @@ input:focus {
   outline: none;
 }
 
-img {
+.img-header {
   width: 150px;
 
   position: absolute;
@@ -36,4 +36,38 @@ img {
   top: -10px;
 
   cursor: pointer;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+
+  width: 200px;
+  height: 400px;
+  background-color: azure;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+.group-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: row;
+}
+
+.type-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

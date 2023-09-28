@@ -8,7 +8,7 @@ export function createPokemonCard(pokemonData, speciesData) {
 
     for (const item of speciesData[i].flavor_text_entries) {
       if (item.language.name === "en" && item.version.name === "red") {
-        description = item.flavor_text.replace(/\n/g, " ");
+        description = item.flavor_text.replace(/\n/g, " ").replace(/\f/g, " ");
 
         break;
       }
