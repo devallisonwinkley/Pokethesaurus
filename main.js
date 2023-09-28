@@ -40,10 +40,10 @@ async function main() {
     pokeSpeciesData.results
   );
 
-  // pokemonCardList.forEach((element) => {
-  //   const card = cardBuilder(element);
-  //   app.appendChild(card);
-  // });
+  pokemonCardList.forEach((element) => {
+    const card = cardBuilder(element);
+    app.appendChild(card);
+  });
 }
 
 main();
