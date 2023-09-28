@@ -19,14 +19,14 @@ async function main() {
     pokeListData.results,
     "url"
   );
-  console.log(pokeListDetails);
+  //console.log(pokeListDetails);
 
   const pokeSpeciesData = await fetchDataDoubleParam(
     pokeListDetails.results,
     "species",
     "url"
   );
-  //console.log(pokeSpeciesData);
+  console.log(pokeSpeciesData);
 
   const pokeEvolutionData = await fetchDataDoubleParam(
     pokeSpeciesData.results,
@@ -40,10 +40,10 @@ async function main() {
     pokeSpeciesData.results
   );
 
-  pokemonCardList.forEach((element) => {
-    const card = cardBuilder(element);
-    app.appendChild(card);
-  });
+  // pokemonCardList.forEach((element) => {
+  //   const card = cardBuilder(element);
+  //   app.appendChild(card);
+  // });
 }
 
 main();
