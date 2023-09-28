@@ -1,4 +1,4 @@
-export function cardBuilder(obj) {
+function cardBuilder(obj) {
   const card = document.createElement("article");
   const cardHeader = document.createElement("section");
   const cardBody = document.createElement("section");
@@ -57,7 +57,7 @@ export function cardBuilder(obj) {
   return card;
 }
 
-export function categoryBuilder(app) {
+export function categoryBuilder(app, obj) {
   const pokemonType = [
     "grass",
     "poison",
@@ -84,7 +84,28 @@ export function categoryBuilder(app) {
   randomType.forEach((element) => {
     const category = document.createElement("section");
     category.className = "category-section " + element;
-  });
+    const categoryLabel = document.createElement("h2");
+    categoryLabel.textContent = element + " Pokemons";
+    const categoryDisplay = document.createElement("div");
+    categoryDisplay.className = "category-content";
 
-  return randomType;
+    category.appendChild(categoryLabel);
+    category.appendChild(categoryDisplay);
+
+    const selectedID = [];
+
+    while (selectedID.length < 5) {
+      const randomNumber = Math.floor(Math.random() * obj.length);
+      console.log(randomNumber);
+      if (!selectedID.includes(randomNumber)) {
+        for (const item of obj[randomNumber].getType()) {
+          if (item === element) {
+            categoryDisplay.appendChild(cardBuilder(obj[randomNumber]));
+            selectedID.push(randomNumber);
+          }
+        }
+      }
+    }
+    app.appendChild(category);
+  });
 }

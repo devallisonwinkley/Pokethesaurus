@@ -40,10 +40,9 @@ input:focus {
 
 .app {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
   gap: 20px;
 
   width: 100vw;
@@ -124,4 +123,12 @@ input:focus {
 
   padding: 20px 10px 20px 10px;
   background-color: bisque;
+}
+
+.category-content {
+  display: flex;
+  flex-direction: row;
+  overflow-x: hidden;
+  gap: 20px;
+  width: 100vw;
 }

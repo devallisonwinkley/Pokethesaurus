@@ -4,7 +4,7 @@ import {
   fetchDataSingleParam,
   fetchDataDoubleParam,
 } from "./helpers/fetchData";
-import { cardBuilder, categoryBuilder } from "./html-builder/htmlBuilder";
+import { categoryBuilder } from "./html-builder/htmlBuilder";
 import "./style.css";
 
 const app = document.getElementById("app");
@@ -40,12 +40,12 @@ async function main() {
     pokeSpeciesData.results
   );
 
-  pokemonCardList.forEach((element) => {
-    const card = cardBuilder(element);
-    app.appendChild(card);
-  });
+  // pokemonCardList.forEach((element) => {
+  //   const card = cardBuilder(element);
+  //   app.appendChild(card);
+  // });
 
-  // categoryBuilder(app);
+  categoryBuilder(app, pokemonCardList);
 }
 
 main();
