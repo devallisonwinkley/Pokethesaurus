@@ -1,13 +1,15 @@
-import { createPokemonCard } from "./classObjects/pokemonCard";
+import { createPokemonCard } from "./class-object/pokemonCard";
 import {
   fetchData,
   fetchDataSingleParam,
   fetchDataDoubleParam,
 } from "./helpers/fetchData";
+import { categoryBuilder } from "./html-builder/htmlBuilder";
 import "./style.css";
 
+const app = document.getElementById("app");
+
 async function main() {
-  const pokeList = [];
   const pokeListData = await fetchData(
     "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0"
   );
@@ -38,19 +40,12 @@ async function main() {
     pokeSpeciesData.results
   );
 
-  pokemonCardList.forEach((element) => {
-    console.log(
-      element.getID() +
-        ":" +
-        element.getName() +
-        ":\n" +
-        element.getDescription() +
-        "\n" +
-        element.getType() +
-        "\n" +
-        element.getGroup()
-    );
-  });
+  // pokemonCardList.forEach((element) => {
+  //   const card = cardBuilder(element);
+  //   app.appendChild(card);
+  // });
+
+  categoryBuilder(app, pokemonCardList);
 }
 
 main();

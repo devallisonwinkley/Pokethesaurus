@@ -28,7 +28,7 @@ input:focus {
   outline: none;
 }
 
-img {
+.img-header {
   width: 150px;
 
   position: absolute;
@@ -36,4 +36,107 @@ img {
   top: -10px;
 
   cursor: pointer;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+
+  width: 100vw;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+
+  width: 260px;
+  min-width: 260px;
+  height: 400px;
+  min-height: 400px;
+  background-color: azure;
+  cursor: pointer;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 10px;
+  height: 40px;
+  width: 100%;
+  background-color: #b3abab;
+}
+
+.group-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-group {
+  padding: 4px;
+  width: auto;
+  min-width: 80px;
+
+  background-color: azure;
+  text-align: center;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-img {
+  max-width: 70%;
+  max-height: 70%;
+  width: auto;
+  height: auto;
+  display: block; /* Center horizontally within its container */
+  margin: 0 auto;
+}
+
+.type-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 10px;
+  gap: 10px;
+}
+
+.type-group {
+  padding: 4px;
+  width: 80px;
+
+  background-color: rgb(105, 100, 128);
+  text-align: center;
+}
+
+.card-footer {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 20px 10px 20px 10px;
+  background-color: bisque;
+}
+
+.category-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.category-content {
+  display: flex;
+  flex-direction: row;
+
+  gap: 20px;
 }

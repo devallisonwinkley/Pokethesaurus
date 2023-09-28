@@ -8,13 +8,13 @@ export function createPokemonCard(pokemonData, speciesData) {
 
     for (const item of speciesData[i].flavor_text_entries) {
       if (item.language.name === "en" && item.version.name === "red") {
-        description = item.flavor_text.replace(/\n/g, " ");
+        description = item.flavor_text.replace(/\n/g, " ").replace(/\f/g, " ");
 
         break;
       }
     }
 
-    const imgUrl = pokemonData[i].sprites.front_default;
+    const imgUrl = pokemonData[i].sprites.other.home.front_default;
     const typeClass = [];
     for (const item of pokemonData[i].types) {
       typeClass.push(item.type.name);
@@ -22,7 +22,17 @@ export function createPokemonCard(pokemonData, speciesData) {
 
     const eggGroup = [];
     for (const item of speciesData[i].egg_groups) {
-      eggGroup.push(item.name);
+      if (
+        item.name === "water1" ||
+        item.name === "water2" ||
+        item.name === "water3"
+      ) {
+        eggGroup.push("water");
+      } else if (item.name === "no-eggs") {
+        eggGroup.push("none");
+      } else {
+        eggGroup.push(item.name);
+      }
     }
 
     const pokemon = new PokemonCard(
