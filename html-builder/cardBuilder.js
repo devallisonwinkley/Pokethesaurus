@@ -20,6 +20,7 @@ export function cardBuilder(obj) {
   cardHeader.appendChild(groupContainer);
 
   const cardImage = document.createElement("img");
+  cardImage.classList = "card-img";
   cardImage.src = obj.getImage();
 
   const typeContainer = document.createElement("div");

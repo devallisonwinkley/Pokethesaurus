@@ -14,7 +14,7 @@ export function createPokemonCard(pokemonData, speciesData) {
       }
     }
 
-    const imgUrl = pokemonData[i].sprites.front_default;
+    const imgUrl = pokemonData[i].sprites.other.home.front_default;
     const typeClass = [];
     for (const item of pokemonData[i].types) {
       typeClass.push(item.type.name);
