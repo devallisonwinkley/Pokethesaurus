@@ -10,7 +10,6 @@ import "./style.css";
 const app = document.getElementById("app");
 
 async function main() {
-  const pokeList = [];
   const pokeListData = await fetchData(
     "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0"
   );
@@ -20,14 +19,14 @@ async function main() {
     pokeListData.results,
     "url"
   );
-  //console.log(pokeListDetails);
+  console.log(pokeListDetails);
 
   const pokeSpeciesData = await fetchDataDoubleParam(
     pokeListDetails.results,
     "species",
     "url"
   );
-  console.log(pokeSpeciesData);
+  //console.log(pokeSpeciesData);
 
   const pokeEvolutionData = await fetchDataDoubleParam(
     pokeSpeciesData.results,
