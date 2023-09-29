@@ -102,20 +102,24 @@ export function headerBuilder(obj) {
   headerContainer.className = "header-container";
   const imgLogo = document.createElement("img");
   imgLogo.className = "header-logo";
+  const searchTextContainer = document.createElement("div");
+  searchTextContainer.className = "search-text-container";
   const searchBar = document.createElement("input");
   searchBar.type = "text";
   searchBar.placeholder = "Find your Pokémon!";
 
   imgLogo.src = "/mp2-logo.png";
 
+  searchTextContainer.appendChild(searchBar);
+
   headerContainer.appendChild(imgLogo);
-  headerContainer.appendChild(searchBar);
+  headerContainer.appendChild(searchTextContainer);
 
   const searchView = document.createElement("div");
   searchView.className = "search-view-container";
   const searchList = document.createElement("ul");
 
-  headerContainer.appendChild(searchView);
+  searchTextContainer.appendChild(searchView);
 
   searchView.appendChild(searchList);
 
@@ -125,7 +129,7 @@ export function headerBuilder(obj) {
 
   function showPokemonSearchList(textValue, keyValue) {
     if (textValue.length > 0) {
-      searchView.style.display = "block";
+      searchView.style.display = "flex";
 
       while (searchList.firstChild) {
         searchList.removeChild(searchList.firstChild);
