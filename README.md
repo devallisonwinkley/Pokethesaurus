@@ -1,4 +1,4 @@
-# Pokethesaurus
+# Pokéthesaurus
 
 This is the master repository for our MP2 Project.
 
