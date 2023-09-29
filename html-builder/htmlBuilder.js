@@ -57,9 +57,9 @@ function cardBuilder(obj) {
   return card;
 }
 
-function categoryBuilder(value, obj) {
+function categoryBuilder(value, counter, obj) {
   const category = document.createElement("section");
-  category.className = "category-section " + value;
+  category.className = "category-section " + value + " " + counter;
   const categoryLabel = document.createElement("h2");
   categoryLabel.textContent = value + " pokemons";
   const categoryDisplay = document.createElement("div");
@@ -86,6 +86,24 @@ function categoryBuilder(value, obj) {
   return category;
 }
 
+export function headerBuilder() {
+  const headerContainer = document.createElement("header");
+  headerContainer.className = "header-container";
+  const imgLogo = document.createElement("img");
+  imgLogo.className = "header-logo";
+  const searchBar = document.createElement("input");
+  searchBar.type = "text";
+  searchBar.placeholder = "enter pokemon name here";
+
+  imgLogo.src =
+    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png";
+
+  headerContainer.appendChild(imgLogo);
+  headerContainer.appendChild(searchBar);
+
+  return headerContainer;
+}
+
 export function randomCategoryBuilder(app, obj) {
   const pokemonType = [
     "grass",
@@ -110,8 +128,20 @@ export function randomCategoryBuilder(app, obj) {
     }
   }
 
-  randomType.forEach((element) => {
-    app.appendChild(categoryBuilder(element, obj));
+  randomType.forEach((element, i) => {
+    let counter;
+    if (i === 0) {
+      counter = "zero";
+    } else if (i === 1) {
+      counter = "one";
+    } else if (i === 2) {
+      counter = "two";
+    } else if (i === 3) {
+      counter = "three";
+    } else if (i === 4) {
+      counter = "four";
+    }
+    app.appendChild(categoryBuilder(element, counter, obj));
     console.log("category created");
   });
 }
