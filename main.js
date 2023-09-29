@@ -13,8 +13,6 @@ import "./style.css";
 const app = document.getElementById("app");
 
 async function main() {
-  app.appendChild(headerBuilder());
-
   const pokeListData = await fetchData(
     "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0"
   );
@@ -38,12 +36,15 @@ async function main() {
     "evolution_chain",
     "url"
   );
+
   //console.log(pokeEvolutionData);
 
   const pokemonCardList = createPokemonCard(
     pokeListDetails.results,
     pokeSpeciesData.results
   );
+
+  app.appendChild(headerBuilder(pokemonCardList));
 
   // pokemonCardList.forEach((element) => {
   //   const card = cardBuilder(element);

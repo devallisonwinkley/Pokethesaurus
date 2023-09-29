@@ -86,7 +86,8 @@ function categoryBuilder(value, counter, obj) {
   return category;
 }
 
-export function headerBuilder() {
+export function headerBuilder(obj) {
+  const pokemonList = obj;
   const headerContainer = document.createElement("header");
   headerContainer.className = "header-container";
   const imgLogo = document.createElement("img");
@@ -100,6 +101,52 @@ export function headerBuilder() {
 
   headerContainer.appendChild(imgLogo);
   headerContainer.appendChild(searchBar);
+
+  const searchView = document.createElement("div");
+  searchView.className = "search-view-container";
+  const searchList = document.createElement("ul");
+
+  headerContainer.appendChild(searchView);
+
+  searchView.appendChild(searchList);
+
+  searchBar.addEventListener("keyup", function (event) {
+    showPokemonSearchList(searchBar.value, event);
+  });
+
+  function showPokemonSearchList(textValue, keyValue) {
+    if (textValue.length > 0) {
+      searchView.style.display = "block";
+
+      while (searchList.firstChild) {
+        searchList.removeChild(searchList.firstChild);
+      }
+
+      pokemonList.forEach((element) => {
+        if (
+          element.getName().toLowerCase().startsWith(textValue.toLowerCase())
+        ) {
+          const itemList = document.createElement("li");
+          itemList.className = "search-item";
+          const itemImage = document.createElement("img");
+          const itemName = document.createElement("p");
+          const itemNumber = document.createElement("p");
+
+          itemImage.src = element.getSpriteImage();
+          itemName.textContent = element.getName();
+          itemNumber.textContent = element.getID();
+
+          itemList.appendChild(itemImage);
+          itemList.appendChild(itemName);
+          itemList.appendChild(itemNumber);
+
+          searchList.appendChild(itemList);
+        }
+      });
+    } else {
+      searchView.style.display = "none";
+    }
+  }
 
   return headerContainer;
 }
