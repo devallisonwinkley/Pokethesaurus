@@ -65,6 +65,16 @@ function categoryBuilder(value, counter, obj) {
   const categoryDisplay = document.createElement("div");
   categoryDisplay.className = "category-content";
 
+  const pokemonName = Array.from(document.querySelectorAll("h2"));
+
+  function capitalize(pokemonName) {
+    for (var i = 0; i < pokemonName.length; i++) {
+      pokemonName[i].textContent = pokemonName[i].textContent.toUpperCase();
+    }
+  }
+
+  capitalize(pokemonName);
+
   category.appendChild(categoryLabel);
   category.appendChild(categoryDisplay);
 
@@ -94,10 +104,9 @@ export function headerBuilder(obj) {
   imgLogo.className = "header-logo";
   const searchBar = document.createElement("input");
   searchBar.type = "text";
-  searchBar.placeholder = "enter pokemon name here";
+  searchBar.placeholder = "Find your Pokémon!";
 
-  imgLogo.src =
-    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png";
+  imgLogo.src = "/mp2-logo.png";
 
   headerContainer.appendChild(imgLogo);
   headerContainer.appendChild(searchBar);

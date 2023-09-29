@@ -2,11 +2,15 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "CroxoxoianText", sans-serif;
 }
 
 body {
   max-width: 100vw;
-  background-image: linear-gradient(to right, #92fe9d 0%, #00c9ff 100%);
+  background-color: #c2b6b6;
+  background-image: linear-gradient(315deg, #c2b6b6 0%, #576574 74%);
+
+  margin-bottom: 1em;
 }
 
 .header-container {
@@ -23,7 +27,7 @@ body {
   top: 0;
   left: 0;
 
-  background-color: #b3abab;
+  background-color: transparent;
 }
 
 input {
@@ -32,6 +36,7 @@ input {
   padding: 10px;
   border: 1px solid #fafafa;
   border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 input:focus {
@@ -39,8 +44,10 @@ input:focus {
 }
 
 .header-logo {
-  height: 70px;
-  width: 70px;
+  position: relative;
+  top: 3px;
+  right: 15px;
+  width: 90px;
 
   cursor: pointer;
 }
@@ -65,6 +72,19 @@ input:focus {
   min-height: 400px;
   background-color: azure;
   cursor: pointer;
+
+  border: 0.3em solid #fff;
+  border-radius: 1em;
+  padding: 0.4em;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #89cff0,
+    0 0 0.8rem #89cff0, 0 0 2.8rem #89cff0, inset 0 0 1.3rem #89cff0;
+}
+
+@keyframes pulsate {
+  100% {
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #89cff0,
+      0 0 80px #89cff0, 0 0 90px #89cff0, 0 0 100px #89cff0, 0 0 150px #89cff0;
+  }
 }
 
 .card-header {
@@ -76,7 +96,7 @@ input:focus {
   padding: 0 10px;
   height: 40px;
   width: 100%;
-  background-color: #b3abab;
+  background-color: lightsteelblue;
 }
 
 .group-container {
@@ -90,8 +110,9 @@ input:focus {
   padding: 4px;
   width: auto;
   min-width: 80px;
+  font-weight: bold;
 
-  background-color: azure;
+  background-color: rgb(219, 241, 241);
   text-align: center;
 }
 
@@ -120,6 +141,8 @@ input:focus {
 .type-group {
   padding: 4px;
   width: 80px;
+  color: white;
+  font-weight: bold;
 
   background-color: rgb(105, 100, 128);
   text-align: center;
@@ -131,8 +154,13 @@ input:focus {
   flex-direction: column;
   justify-content: space-between;
 
-  padding: 20px 10px 20px 10px;
-  background-color: bisque;
+  padding: 20px 10px 35px 10px;
+  background-color: rgb(248, 248, 165);
+}
+
+.card-footer h2,
+p {
+  text-align: center;
 }
 
 .category-section {
@@ -152,7 +180,6 @@ input:focus {
 .category-content {
   display: flex;
   flex-direction: row;
-
   gap: 20px;
 }
 
