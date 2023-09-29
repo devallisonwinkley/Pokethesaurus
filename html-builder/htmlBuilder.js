@@ -58,22 +58,24 @@ function cardBuilder(obj) {
 }
 
 function categoryBuilder(value, counter, obj) {
+  const categoryName = value[0].toUpperCase() + value.slice(1);
+
   const category = document.createElement("section");
-  category.className = "category-section " + value + " " + counter;
+  category.className = "category-section";
   const categoryLabel = document.createElement("h2");
-  categoryLabel.textContent = value + " pokemons";
+  categoryLabel.textContent = categoryName + " Pokemons";
   const categoryDisplay = document.createElement("div");
   categoryDisplay.className = "category-content";
 
-  const pokemonName = Array.from(document.querySelectorAll("h2"));
+  // const pokemonName = Array.from(document.querySelectorAll("h2"));
 
-  function capitalize(pokemonName) {
-    for (var i = 0; i < pokemonName.length; i++) {
-      pokemonName[i].textContent = pokemonName[i].textContent.toUpperCase();
-    }
-  }
+  // function capitalize(pokemonName) {
+  //   for (var i = 0; i < pokemonName.length; i++) {
+  //     pokemonName[i].textContent = pokemonName[i].textContent.toUpperCase();
+  //   }
+  // }
 
-  capitalize(pokemonName);
+  // capitalize(pokemonName);
 
   category.appendChild(categoryLabel);
   category.appendChild(categoryDisplay);
