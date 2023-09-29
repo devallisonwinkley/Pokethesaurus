@@ -158,14 +158,23 @@ input:focus {
   background-color: rgb(248, 248, 165);
 }
 
+.card-footer h2,
+p {
+  text-align: center;
+}
+
 .category-section {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.zero {
+.category-section:first-of-type {
   padding-top: 80px;
+}
+
+.category-section:last-of-type {
+  padding-bottom: 40px;
 }
 
 .category-content {
@@ -174,7 +183,17 @@ input:focus {
   gap: 20px;
 }
 
-.card-footer h2,
-p {
-  text-align: center;
+.search-view-container {
+  display: none;
+  position: fixed;
+  top: 90px;
+  left: 480px;
+
+  background: #fafafa;
+}
+
+.search-item {
+  display: flex;
+  flex-direction: row;
+  max-height: 60px;
 }
