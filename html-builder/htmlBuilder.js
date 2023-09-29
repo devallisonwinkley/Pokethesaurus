@@ -135,27 +135,34 @@ export function headerBuilder(obj) {
         searchList.removeChild(searchList.firstChild);
       }
 
-      pokemonList.forEach((element) => {
-        if (
-          element.getName().toLowerCase().startsWith(textValue.toLowerCase())
-        ) {
-          const itemList = document.createElement("li");
-          itemList.className = "search-item";
-          const itemImage = document.createElement("img");
-          const itemName = document.createElement("p");
-          const itemNumber = document.createElement("p");
+      let counter = 0;
+      for (const pokemon of pokemonList) {
+        if (counter < 7) {
+          if (
+            pokemon.getName().toLowerCase().startsWith(textValue.toLowerCase())
+          ) {
+            const itemList = document.createElement("li");
+            itemList.className = "search-item";
+            const itemImage = document.createElement("img");
+            const itemName = document.createElement("p");
+            const itemNumber = document.createElement("p");
 
-          itemImage.src = element.getSpriteImage();
-          itemName.textContent = element.getName();
-          itemNumber.textContent = element.getID();
+            itemImage.src = pokemon.getSpriteImage();
+            itemName.textContent = pokemon.getName();
+            itemNumber.textContent = "#" + pokemon.getID();
 
-          itemList.appendChild(itemImage);
-          itemList.appendChild(itemName);
-          itemList.appendChild(itemNumber);
+            itemList.appendChild(itemImage);
+            itemList.appendChild(itemName);
+            itemList.appendChild(itemNumber);
 
-          searchList.appendChild(itemList);
+            searchList.appendChild(itemList);
+
+            counter += 1;
+          }
+        } else {
+          break;
         }
-      });
+      }
     } else {
       searchView.style.display = "none";
     }
