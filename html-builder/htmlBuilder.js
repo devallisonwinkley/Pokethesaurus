@@ -67,16 +67,6 @@ function categoryBuilder(value, counter, obj) {
   const categoryDisplay = document.createElement("div");
   categoryDisplay.className = "category-content";
 
-  // const pokemonName = Array.from(document.querySelectorAll("h2"));
-
-  // function capitalize(pokemonName) {
-  //   for (var i = 0; i < pokemonName.length; i++) {
-  //     pokemonName[i].textContent = pokemonName[i].textContent.toUpperCase();
-  //   }
-  // }
-
-  // capitalize(pokemonName);
-
   category.appendChild(categoryLabel);
   category.appendChild(categoryDisplay);
 
