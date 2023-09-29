@@ -86,7 +86,7 @@ function categoryBuilder(value, obj) {
   return category;
 }
 
-export function addCategoryList(app, obj) {
+export function randomCategoryBuilder(app, obj) {
   const pokemonType = [
     "grass",
     "poison",
