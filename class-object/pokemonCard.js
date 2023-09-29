@@ -15,6 +15,8 @@ export function createPokemonCard(pokemonData, speciesData) {
     }
 
     const imgUrl = pokemonData[i].sprites.other.home.front_default;
+    const imgSprite = pokemonData[i].sprites.front_default;
+
     const typeClass = [];
     for (const item of pokemonData[i].types) {
       typeClass.push(item.type.name);
@@ -39,6 +41,7 @@ export function createPokemonCard(pokemonData, speciesData) {
       id,
       name,
       imgUrl,
+      imgSprite,
       description,
       eggGroup,
       typeClass
@@ -50,10 +53,19 @@ export function createPokemonCard(pokemonData, speciesData) {
   return pokemonCardList;
 }
 
-function PokemonCard(id, name, imgUrl, description, eggGroup, typeClass) {
+function PokemonCard(
+  id,
+  name,
+  imgUrl,
+  imgSprite,
+  description,
+  eggGroup,
+  typeClass
+) {
   let _id = id;
   let _name = name;
   let _imgUrl = imgUrl;
+  let _imgSprite = imgSprite;
   let _description = description;
   let _eggGroup = eggGroup;
   let _typeClass = typeClass;
@@ -73,6 +85,9 @@ function PokemonCard(id, name, imgUrl, description, eggGroup, typeClass) {
     },
     getImage() {
       return _imgUrl;
+    },
+    getSpriteImage() {
+      return _imgSprite;
     },
     getDescription() {
       return _description;
