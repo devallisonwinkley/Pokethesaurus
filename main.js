@@ -4,7 +4,7 @@ import {
   fetchDataSingleParam,
   fetchDataDoubleParam,
 } from "./helpers/fetchData";
-import { categoryBuilder } from "./html-builder/htmlBuilder";
+import { randomCategoryBuilder } from "./html-builder/htmlBuilder";
 import "./style.css";
 
 const app = document.getElementById("app");
@@ -45,7 +45,7 @@ async function main() {
   //   app.appendChild(card);
   // });
 
-  categoryBuilder(app, pokemonCardList);
+  randomCategoryBuilder(app, pokemonCardList);
 }
 
 main();
