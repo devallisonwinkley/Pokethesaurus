@@ -189,7 +189,7 @@ function heroBuilder(obj) {
   featured.textContent = "Featured Legendary:";
   PokemonName.textContent = obj.getName();
   PokemonID.textContent = "#" + obj.getID();
-  heroImg.src = obj.getImgHero();
+  heroImg.src = obj.getImage();
   description.textContent = obj.getDescription();
   imgFooter.src = obj.getSpriteImage();
   footerLink.textContent = "See more . . .";
