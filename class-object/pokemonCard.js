@@ -13,7 +13,7 @@ export function createPokemonCard(pokemonData, speciesData) {
         break;
       }
     }
-
+    const imgHero = pokemonData[i].sprites.other.dream_world.front_default;
     const imgUrl = pokemonData[i].sprites.other.home.front_default;
     const imgSprite = pokemonData[i].sprites.front_default;
 
@@ -40,6 +40,7 @@ export function createPokemonCard(pokemonData, speciesData) {
     const pokemon = new PokemonCard(
       id,
       name,
+      imgHero,
       imgUrl,
       imgSprite,
       description,
@@ -56,19 +57,21 @@ export function createPokemonCard(pokemonData, speciesData) {
 function PokemonCard(
   id,
   name,
+  imgHero,
   imgUrl,
   imgSprite,
   description,
   eggGroup,
   typeClass
 ) {
-  let _id = id;
-  let _name = name;
-  let _imgUrl = imgUrl;
-  let _imgSprite = imgSprite;
-  let _description = description;
-  let _eggGroup = eggGroup;
-  let _typeClass = typeClass;
+  const _id = id;
+  const _name = name;
+  const _imgHero = imgHero;
+  const _imgUrl = imgUrl;
+  const _imgSprite = imgSprite;
+  const _description = description;
+  const _eggGroup = eggGroup;
+  const _typeClass = typeClass;
 
   return {
     getID() {
@@ -82,6 +85,9 @@ function PokemonCard(
     },
     getGroup() {
       return _eggGroup;
+    },
+    getImgHero() {
+      return _imgHero;
     },
     getImage() {
       return _imgUrl;

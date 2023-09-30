@@ -7,6 +7,7 @@ import {
 import {
   headerBuilder,
   randomCategoryBuilder,
+  randomHeroBuilder,
 } from "./html-builder/htmlBuilder";
 import "./style.css";
 
@@ -16,20 +17,20 @@ async function main() {
   const pokeListData = await fetchData(
     "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0"
   );
-  console.log(pokeListData);
+  //console.log(pokeListData);
 
   const pokeListDetails = await fetchDataSingleParam(
     pokeListData.results,
     "url"
   );
-  console.log(pokeListDetails);
+  //console.log(pokeListDetails);
 
   const pokeSpeciesData = await fetchDataDoubleParam(
     pokeListDetails.results,
     "species",
     "url"
   );
-  // console.log(pokeSpeciesData);
+  //console.log(pokeSpeciesData);
 
   const pokeEvolutionData = await fetchDataDoubleParam(
     pokeSpeciesData.results,
@@ -43,6 +44,8 @@ async function main() {
     pokeListDetails.results,
     pokeSpeciesData.results
   );
+
+  randomHeroBuilder(app, pokemonCardList);
 
   app.appendChild(headerBuilder(pokemonCardList));
 

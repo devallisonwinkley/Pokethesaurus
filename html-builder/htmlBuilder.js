@@ -163,6 +163,73 @@ export function headerBuilder(obj) {
   return headerContainer;
 }
 
+function heroBuilder(obj) {
+  const hero = document.createElement("div");
+  const divLeft = document.createElement("div");
+  const featured = document.createElement("h1");
+  const headerDiv = document.createElement("div");
+  const PokemonID = document.createElement("h1");
+  const PokemonName = document.createElement("h1");
+  const divImg = document.createElement("div");
+  const heroImg = document.createElement("img");
+  const divRight = document.createElement("div");
+  const description = document.createElement("p");
+  const footer = document.createElement("div");
+  const imgFooter = document.createElement("img");
+  const footerLink = document.createElement("p");
+
+  hero.className = "hero-container";
+  headerDiv.className = "hero-header";
+  divImg.className = "hero-image-container";
+  divRight.className = "hero-right-container";
+  divLeft.className = "hero-left-container";
+  footer.className = "hero-footer-container";
+  description.className = "hero-description";
+
+  featured.textContent = "Feature Legendary:";
+  PokemonName.textContent = obj.getName();
+  PokemonID.textContent = obj.getID();
+  heroImg.src = obj.getImgHero();
+  description.textContent = obj.getDescription();
+  imgFooter.src = obj.getSpriteImage();
+  footerLink.textContent = "See more . . .";
+
+  divImg.appendChild(heroImg);
+
+  headerDiv.appendChild(PokemonName);
+  headerDiv.appendChild(PokemonID);
+
+  footer.appendChild(imgFooter);
+  footer.appendChild(footerLink);
+
+  divLeft.appendChild(featured);
+  divLeft.appendChild(divImg);
+
+  divRight.appendChild(headerDiv);
+  divRight.appendChild(description);
+  divRight.appendChild(footer);
+
+  hero.appendChild(divLeft);
+  hero.appendChild(divRight);
+
+  return hero;
+}
+
+export function randomHeroBuilder(app, obj) {
+  const legendaries = [151, 150, 146, 145, 144];
+
+  const randomLegend = Math.floor(Math.random() * legendaries.length);
+
+  for (let i = obj.length - 1; i > 142; i--) {
+    if (obj[i].getID() == legendaries[randomLegend]) {
+      console.log(obj[i].getName());
+
+      app.appendChild(heroBuilder(obj[i]));
+      break;
+    }
+  }
+}
+
 export function randomCategoryBuilder(app, obj) {
   const pokemonType = [
     "grass",
