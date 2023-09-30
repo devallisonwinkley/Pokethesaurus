@@ -1,3 +1,5 @@
+import { fetchData, fetchDataSingleParam } from "../helpers/fetchData";
+
 function cardBuilder(obj) {
   const card = document.createElement("article");
   const cardHeader = document.createElement("section");
@@ -194,6 +196,24 @@ function heroBuilder(obj) {
   imgFooter.src = obj.getSpriteImage();
   footerLink.textContent = "See more . . .";
 
+  obj.getAbilities().forEach(async (element, i) => {
+    const abilityData = await fetchData(element[1]);
+    console.log(abilityData);
+
+    const abilityContainer = document.createElement("div");
+    abilityContainer.className = "ability-container";
+    const abilityName = document.createElement("p");
+    const abilityDescription = document.createElement("p");
+
+    abilityName.textContent = "Ability " + (i + 1) + ": " + element[0];
+    abilityDescription.textContent =
+      abilityData.flavor_text_entries[0].flavor_text;
+
+    abilityContainer.appendChild(abilityName);
+    abilityContainer.appendChild(abilityDescription);
+    divRight.appendChild(abilityContainer);
+  });
+
   divImg.appendChild(heroImg);
 
   headerDiv.appendChild(PokemonName);
@@ -207,12 +227,11 @@ function heroBuilder(obj) {
 
   divRight.appendChild(headerDiv);
   divRight.appendChild(description);
+
   divRight.appendChild(footer);
 
   hero.appendChild(divLeft);
   hero.appendChild(divRight);
-
-  console.log(obj.getAbilities());
 
   return hero;
 }

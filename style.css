@@ -111,11 +111,26 @@ body {
   flex-grow: 1;
 }
 
+.ability-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 40px;
+}
+
+.ability-container p {
+  font-size: 24px;
+}
+
 .hero-footer-container {
   display: flex;
   flex-direction: row;
   justify-content: right;
   align-items: center;
+
+  order: 1;
 
   gap: 20px;
   padding: 0 20px;
