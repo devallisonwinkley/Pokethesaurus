@@ -186,9 +186,9 @@ function heroBuilder(obj) {
   footer.className = "hero-footer-container";
   description.className = "hero-description";
 
-  featured.textContent = "Feature Legendary:";
+  featured.textContent = "Featured Legendary:";
   PokemonName.textContent = obj.getName();
-  PokemonID.textContent = obj.getID();
+  PokemonID.textContent = "#" + obj.getID();
   heroImg.src = obj.getImgHero();
   description.textContent = obj.getDescription();
   imgFooter.src = obj.getSpriteImage();
@@ -212,6 +212,8 @@ function heroBuilder(obj) {
   hero.appendChild(divLeft);
   hero.appendChild(divRight);
 
+  console.log(obj.getAbilities());
+
   return hero;
 }
 
@@ -222,8 +224,6 @@ export function randomHeroBuilder(app, obj) {
 
   for (let i = obj.length - 1; i > 142; i--) {
     if (obj[i].getID() == legendaries[randomLegend]) {
-      console.log(obj[i].getName());
-
       app.appendChild(heroBuilder(obj[i]));
       break;
     }

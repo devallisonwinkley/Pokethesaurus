@@ -17,6 +17,12 @@ export function createPokemonCard(pokemonData, speciesData) {
     const imgUrl = pokemonData[i].sprites.other.home.front_default;
     const imgSprite = pokemonData[i].sprites.front_default;
 
+    const abilities = [];
+    for (const item of pokemonData[i].abilities) {
+      const ability = [item.ability.name, item.ability.url];
+      abilities.push(ability);
+    }
+
     const typeClass = [];
     for (const item of pokemonData[i].types) {
       typeClass.push(item.type.name);
@@ -24,13 +30,7 @@ export function createPokemonCard(pokemonData, speciesData) {
 
     const eggGroup = [];
     for (const item of speciesData[i].egg_groups) {
-      if (
-        item.name === "water1" ||
-        item.name === "water2" ||
-        item.name === "water3"
-      ) {
-        eggGroup.push("water");
-      } else if (item.name === "no-eggs") {
+      if (item.name === "no-eggs") {
         eggGroup.push("none");
       } else {
         eggGroup.push(item.name);
@@ -45,7 +45,8 @@ export function createPokemonCard(pokemonData, speciesData) {
       imgSprite,
       description,
       eggGroup,
-      typeClass
+      typeClass,
+      abilities
     );
 
     pokemonCardList.push(pokemon);
@@ -62,7 +63,8 @@ function PokemonCard(
   imgSprite,
   description,
   eggGroup,
-  typeClass
+  typeClass,
+  abilities
 ) {
   const _id = id;
   const _name = name;
@@ -72,6 +74,7 @@ function PokemonCard(
   const _description = description;
   const _eggGroup = eggGroup;
   const _typeClass = typeClass;
+  const _abilities = abilities;
 
   return {
     getID() {
@@ -97,6 +100,9 @@ function PokemonCard(
     },
     getDescription() {
       return _description;
+    },
+    getAbilities() {
+      return _abilities;
     },
   };
 }

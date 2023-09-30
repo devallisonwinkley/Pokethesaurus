@@ -201,7 +201,10 @@ body {
   background-color: #784f2b;
 }
 
-.water {
+.water,
+.water1,
+.water2,
+.water3 {
   background-color: #1c538e;
 }
 
@@ -325,7 +328,7 @@ p {
 }
 
 .category-section:first-of-type {
-  padding-top: 80px;
+  padding-top: 40px;
 }
 
 .category-section:last-of-type {
