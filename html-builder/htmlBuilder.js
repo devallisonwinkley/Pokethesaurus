@@ -57,7 +57,7 @@ function cardBuilder(obj) {
   return card;
 }
 
-function categoryBuilder(value, counter, obj) {
+function categoryBuilder(value, obj) {
   const categoryName = value[0].toUpperCase() + value.slice(1);
 
   const category = document.createElement("section");
@@ -66,16 +66,6 @@ function categoryBuilder(value, counter, obj) {
   categoryLabel.textContent = categoryName + " Pokemons";
   const categoryDisplay = document.createElement("div");
   categoryDisplay.className = "category-content";
-
-  // const pokemonName = Array.from(document.querySelectorAll("h2"));
-
-  // function capitalize(pokemonName) {
-  //   for (var i = 0; i < pokemonName.length; i++) {
-  //     pokemonName[i].textContent = pokemonName[i].textContent.toUpperCase();
-  //   }
-  // }
-
-  // capitalize(pokemonName);
 
   category.appendChild(categoryLabel);
   category.appendChild(categoryDisplay);
@@ -129,7 +119,7 @@ export function headerBuilder(obj) {
     showPokemonSearchList(searchBar.value, event);
   });
 
-  function showPokemonSearchList(textValue, keyValue) {
+  function showPokemonSearchList(textValue) {
     if (textValue.length > 0) {
       searchView.style.display = "flex";
 
@@ -210,7 +200,7 @@ export function randomCategoryBuilder(app, obj) {
     } else if (i === 4) {
       counter = "four";
     }
-    app.appendChild(categoryBuilder(element, counter, obj));
+    app.appendChild(categoryBuilder(element, obj));
     console.log("category created");
   });
 }
