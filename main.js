@@ -15,6 +15,9 @@ import "./style.css";
 const app = document.getElementById("app");
 
 async function main() {
+  const pokemonView = PokemonViewBuilder();
+  app.appendChild(pokemonView.pokemonView);
+
   const pokeListData = await fetchData(
     "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0"
   );
@@ -46,7 +49,7 @@ async function main() {
     pokeSpeciesData.results
   );
 
-  randomHeroBuilder(app, pokemonCardList);
+  randomHeroBuilder(app, pokemonCardList, pokemonView);
 
   app.appendChild(headerBuilder(pokemonCardList));
 
@@ -55,12 +58,9 @@ async function main() {
   //   app.appendChild(card);
   // });
 
-  randomCategoryBuilder(app, pokemonCardList);
+  randomCategoryBuilder(app, pokemonCardList, pokemonView);
 
-  const pokemonView = PokemonViewBuilder();
-  app.appendChild(pokemonView.pokemonView);
-  console.log(pokemonCardList[0].stats.getHp());
-  pokemonView.updateView(pokemonCardList[150]);
+  //pokemonView.updateView(pokemonCardList[3]);
 }
 
 main();

@@ -1,6 +1,6 @@
-import { fetchData, fetchDataSingleParam } from "../helpers/fetchData";
+import { fetchData } from "../helpers/fetchData";
 
-function cardBuilder(obj) {
+function cardBuilder(obj, view) {
   const card = document.createElement("article");
   const cardHeader = document.createElement("section");
   const cardBody = document.createElement("section");
@@ -56,10 +56,15 @@ function cardBuilder(obj) {
   card.appendChild(cardBody);
   card.appendChild(cardFooter);
 
+  card.addEventListener("click", function () {
+    console.log("click");
+    view.updateView(obj);
+  });
+
   return card;
 }
 
-function categoryBuilder(value, obj) {
+function categoryBuilder(value, obj, view) {
   const categoryName = value[0].toUpperCase() + value.slice(1);
 
   const category = document.createElement("section");
@@ -79,7 +84,7 @@ function categoryBuilder(value, obj) {
     if (!selectedID.includes(randomNumber)) {
       for (const item of obj[randomNumber].getType()) {
         if (item === value) {
-          categoryDisplay.appendChild(cardBuilder(obj[randomNumber]));
+          categoryDisplay.appendChild(cardBuilder(obj[randomNumber], view));
           console.log("card created");
           selectedID.push(randomNumber);
         }
@@ -326,10 +331,14 @@ export function PokemonViewBuilder() {
   speed.textContent = "Speed: 0";
 
   const updateView = (obj) => {
+    pokemonView.style.display = "block";
     pokemonName.textContent = "# " + obj.getID() + ": " + obj.getName();
 
     imgMain.src = obj.getImage();
 
+    while (viewType.firstChild) {
+      viewType.removeChild(viewType.firstChild);
+    }
     for (const item of obj.getType()) {
       const group = document.createElement("p");
       group.className = "type-group " + item;
@@ -339,6 +348,9 @@ export function PokemonViewBuilder() {
 
     imgGroup.src = obj.getSpriteImage();
 
+    while (viewGroup.firstChild) {
+      viewGroup.removeChild(viewGroup.firstChild);
+    }
     for (const item of obj.getGroup()) {
       const group = document.createElement("p");
       group.className = "card-group " + item;
@@ -353,6 +365,9 @@ export function PokemonViewBuilder() {
     specialDefense.textContent = "SD: " + obj.stats.getSpecialDefense();
     speed.textContent = "Speed: " + obj.stats.getSpeed();
 
+    while (viewAbility.firstChild) {
+      viewAbility.removeChild(viewAbility.firstChild);
+    }
     obj.getAbilities().forEach(async (element, i) => {
       const abilityData = await fetchData(element[1]);
       console.log(abilityData);
@@ -384,7 +399,7 @@ export function PokemonViewBuilder() {
   };
 }
 
-export function randomCategoryBuilder(app, obj) {
+export function randomCategoryBuilder(app, obj, view) {
   const pokemonType = [
     "grass",
     "poison",
@@ -421,7 +436,7 @@ export function randomCategoryBuilder(app, obj) {
     } else if (i === 4) {
       counter = "four";
     }
-    app.appendChild(categoryBuilder(element, obj));
+    app.appendChild(categoryBuilder(element, obj, view));
     console.log("category created");
   });
 }
