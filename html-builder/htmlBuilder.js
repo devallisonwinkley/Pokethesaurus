@@ -174,7 +174,7 @@ export function headerBuilder(obj, view) {
   return headerContainer;
 }
 
-function heroBuilder(obj) {
+function heroBuilder(obj, view) {
   const hero = document.createElement("div");
   const divLeft = document.createElement("div");
   const featured = document.createElement("h1");
@@ -244,17 +244,21 @@ function heroBuilder(obj) {
   hero.appendChild(divLeft);
   hero.appendChild(divRight);
 
+  footerLink.addEventListener("click", function () {
+    view.updateView(obj);
+  });
+
   return hero;
 }
 
-export function randomHeroBuilder(app, obj) {
+export function randomHeroBuilder(app, obj, view) {
   const legendaries = [151, 150, 146, 145, 144];
 
   const randomLegend = Math.floor(Math.random() * legendaries.length);
 
   for (let i = obj.length - 1; i > 142; i--) {
     if (obj[i].getID() == legendaries[randomLegend]) {
-      app.appendChild(heroBuilder(obj[i]));
+      app.appendChild(heroBuilder(obj[i], view));
       break;
     }
   }
