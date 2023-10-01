@@ -36,6 +36,14 @@ export function createPokemonCard(pokemonData, speciesData) {
         eggGroup.push(item.name);
       }
     }
+    const pStats = new pokemonStats(
+      pokemonData[i].stats[0].base_stat,
+      pokemonData[i].stats[1].base_stat,
+      pokemonData[i].stats[2].base_stat,
+      pokemonData[i].stats[3].base_stat,
+      pokemonData[i].stats[4].base_stat,
+      pokemonData[i].stats[5].base_stat
+    );
 
     const pokemon = new PokemonCard(
       id,
@@ -46,13 +54,51 @@ export function createPokemonCard(pokemonData, speciesData) {
       description,
       eggGroup,
       typeClass,
-      abilities
+      abilities,
+      pStats
     );
 
     pokemonCardList.push(pokemon);
   });
 
   return pokemonCardList;
+}
+
+function pokemonStats(
+  hp,
+  attack,
+  defense,
+  specialAttack,
+  specialDefense,
+  speed
+) {
+  const _hp = hp;
+  const _attack = attack;
+  const _defense = defense;
+  const _specialAttack = specialAttack;
+  const _specialDefense = specialDefense;
+  const _speed = speed;
+
+  return {
+    getHp() {
+      return _hp;
+    },
+    getAttack() {
+      return _attack;
+    },
+    getDefense() {
+      return _defense;
+    },
+    getSpecialAttack() {
+      return _specialAttack;
+    },
+    getSpecialDefense() {
+      return _specialDefense;
+    },
+    getSpeed() {
+      return _speed;
+    },
+  };
 }
 
 function PokemonCard(
@@ -64,7 +110,8 @@ function PokemonCard(
   description,
   eggGroup,
   typeClass,
-  abilities
+  abilities,
+  pStats
 ) {
   const _id = id;
   const _name = name;
@@ -75,6 +122,7 @@ function PokemonCard(
   const _eggGroup = eggGroup;
   const _typeClass = typeClass;
   const _abilities = abilities;
+  const stats = pStats;
 
   return {
     getID() {
@@ -104,5 +152,6 @@ function PokemonCard(
     getAbilities() {
       return _abilities;
     },
+    stats,
   };
 }

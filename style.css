@@ -49,6 +49,94 @@ body {
   width: 100%;
 }
 
+.view-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
+.view-filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  opacity: 0.3;
+  background-color: #272727;
+}
+
+.view-display-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 80px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 700px;
+  height: 400px;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.right-view {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  width: 350px;
+}
+
+.view-main {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.view-main img {
+  height: calc(100% - 50%);
+}
+
+.left-view {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.view-group-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.view-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: left;
+  align-items: left;
+  width: 240px;
+  height: 80%;
+}
+
+.stat-title {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+}
+
+.view-description {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+}
+
 .hero-container {
   display: flex;
   flex-direction: row;
@@ -194,6 +282,7 @@ body {
   padding: 4px;
   width: auto;
   min-width: 80px;
+  max-height: 30px;
   font-weight: 14px;
 
   color: #fff;

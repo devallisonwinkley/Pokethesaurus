@@ -214,6 +214,8 @@ function heroBuilder(obj) {
     divRight.appendChild(abilityContainer);
   });
 
+  console.log(obj.stats);
+
   divImg.appendChild(heroImg);
 
   headerDiv.appendChild(PokemonName);
@@ -247,6 +249,139 @@ export function randomHeroBuilder(app, obj) {
       break;
     }
   }
+}
+
+export function PokemonViewBuilder() {
+  const pokemonView = document.createElement("div");
+  const viewFilter = document.createElement("div");
+  const viewDisplay = document.createElement("div");
+  const rightDisplay = document.createElement("div");
+  const viewGroup = document.createElement("div");
+  const imgGroup = document.createElement("img");
+  const containerGroup = document.createElement("div");
+  const viewStats = document.createElement("div");
+  const stats = document.createElement("h3");
+  const hp = document.createElement("p");
+  const attack = document.createElement("p");
+  const defense = document.createElement("p");
+  const specialAttack = document.createElement("p");
+  const specialDefense = document.createElement("p");
+  const speed = document.createElement("p");
+  const viewAbility = document.createElement("div");
+  const leftDisplay = document.createElement("div");
+  const pokemonName = document.createElement("p");
+  const viewMainDisplay = document.createElement("div");
+  const imgMain = document.createElement("img");
+  const viewType = document.createElement("div");
+
+  const description = document.createElement("p");
+
+  rightDisplay.className = "left-view";
+  pokemonView.className = "view-container";
+  viewFilter.className = "view-filter";
+  viewGroup.className = "view-group-container";
+  containerGroup.className = "group-container";
+  viewDisplay.className = "view-display-container";
+  viewStats.className = "view-stats";
+  stats.className = "stat-title";
+
+  leftDisplay.className = "right-view";
+  viewMainDisplay.className = "view-main";
+  description.className = "view-description";
+
+  viewGroup.appendChild(imgGroup);
+  viewGroup.appendChild(containerGroup);
+
+  viewStats.appendChild(stats);
+  viewStats.appendChild(hp);
+  viewStats.appendChild(attack);
+  viewStats.appendChild(defense);
+  viewStats.appendChild(specialAttack);
+  viewStats.appendChild(specialDefense);
+  viewStats.appendChild(speed);
+
+  rightDisplay.appendChild(viewGroup);
+  rightDisplay.appendChild(viewStats);
+  rightDisplay.appendChild(viewAbility);
+
+  viewMainDisplay.appendChild(imgMain);
+  viewMainDisplay.appendChild(viewType);
+
+  leftDisplay.appendChild(pokemonName);
+  leftDisplay.appendChild(viewMainDisplay);
+
+  viewDisplay.appendChild(leftDisplay);
+  viewDisplay.appendChild(rightDisplay);
+  viewDisplay.appendChild(description);
+
+  pokemonView.appendChild(viewFilter);
+  pokemonView.appendChild(viewDisplay);
+
+  stats.textContent = "Stats";
+  hp.textContent = "HP: 0";
+  attack.textContent = "Attack: 0";
+  defense.textContent = "Defense: 0";
+  specialAttack.textContent = "SP: 0";
+  specialDefense.textContent = "SD: 0";
+  speed.textContent = "Speed: 0";
+
+  const updateView = (obj) => {
+    pokemonName.textContent = "# " + obj.getID() + ": " + obj.getName();
+
+    imgMain.src = obj.getImage();
+
+    for (const item of obj.getType()) {
+      const group = document.createElement("p");
+      group.className = "type-group " + item;
+      group.textContent = item;
+      viewType.appendChild(group);
+    }
+
+    imgGroup.src = obj.getSpriteImage();
+
+    for (const item of obj.getGroup()) {
+      const group = document.createElement("p");
+      group.className = "card-group " + item;
+      group.textContent = item;
+      viewGroup.appendChild(group);
+    }
+
+    hp.textContent = "HP: " + obj.stats.getHp();
+    attack.textContent = "Attack: " + obj.stats.getAttack();
+    defense.textContent = "Defense: " + obj.stats.getDefense();
+    specialAttack.textContent = "SP: " + obj.stats.getSpecialAttack();
+    specialDefense.textContent = "SD: " + obj.stats.getSpecialDefense();
+    speed.textContent = "Speed: " + obj.stats.getSpeed();
+
+    obj.getAbilities().forEach(async (element, i) => {
+      const abilityData = await fetchData(element[1]);
+      console.log(abilityData);
+
+      const abilityContainer = document.createElement("div");
+      abilityContainer.className = "ability-container";
+      const abilityName = document.createElement("p");
+      const abilityDescription = document.createElement("p");
+
+      abilityName.textContent = "Ability " + (i + 1) + ": " + element[0];
+      abilityDescription.textContent =
+        abilityData.flavor_text_entries[0].flavor_text;
+
+      abilityContainer.appendChild(abilityName);
+      abilityContainer.appendChild(abilityDescription);
+      viewAbility.appendChild(abilityContainer);
+    });
+
+    description.textContent = obj.getDescription();
+  };
+
+  viewFilter.addEventListener("click", () => {
+    pokemonView.style.display = "none";
+  });
+
+  return {
+    pokemonView,
+    updateView,
+  };
 }
 
 export function randomCategoryBuilder(app, obj) {

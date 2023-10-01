@@ -8,6 +8,7 @@ import {
   headerBuilder,
   randomCategoryBuilder,
   randomHeroBuilder,
+  PokemonViewBuilder,
 } from "./html-builder/htmlBuilder";
 import "./style.css";
 
@@ -23,7 +24,7 @@ async function main() {
     pokeListData.results,
     "url"
   );
-  //console.log(pokeListDetails);
+  console.log(pokeListDetails);
 
   const pokeSpeciesData = await fetchDataDoubleParam(
     pokeListDetails.results,
@@ -55,6 +56,11 @@ async function main() {
   // });
 
   randomCategoryBuilder(app, pokemonCardList);
+
+  const pokemonView = PokemonViewBuilder();
+  app.appendChild(pokemonView.pokemonView);
+  console.log(pokemonCardList[0].stats.getHp());
+  pokemonView.updateView(pokemonCardList[150]);
 }
 
 main();
