@@ -95,7 +95,7 @@ function categoryBuilder(value, obj, view) {
   return category;
 }
 
-export function headerBuilder(obj) {
+export function headerBuilder(obj, view) {
   const pokemonList = obj;
   const headerContainer = document.createElement("header");
   headerContainer.className = "header-container";
@@ -155,6 +155,10 @@ export function headerBuilder(obj) {
             itemList.appendChild(itemNumber);
 
             searchList.appendChild(itemList);
+
+            itemList.addEventListener("click", function () {
+              view.updateView(pokemon);
+            });
 
             counter += 1;
           }

@@ -27,7 +27,7 @@ async function main() {
     pokeListData.results,
     "url"
   );
-  console.log(pokeListDetails);
+  //console.log(pokeListDetails);
 
   const pokeSpeciesData = await fetchDataDoubleParam(
     pokeListDetails.results,
@@ -51,7 +51,7 @@ async function main() {
 
   randomHeroBuilder(app, pokemonCardList, pokemonView);
 
-  app.appendChild(headerBuilder(pokemonCardList));
+  app.appendChild(headerBuilder(pokemonCardList, pokemonView));
 
   // pokemonCardList.forEach((element) => {
   //   const card = cardBuilder(element);
