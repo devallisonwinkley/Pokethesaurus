@@ -1,4 +1,4 @@
-export function createPokemonCard(pokemonData, speciesData) {
+export function createPokemonCard(pokemonData, speciesData, evolutionData) {
   const pokemonCardList = [];
 
   pokemonData.forEach((element, i) => {
@@ -36,6 +36,18 @@ export function createPokemonCard(pokemonData, speciesData) {
         eggGroup.push(item.name);
       }
     }
+
+    const evolutionList = [];
+    let count = 0;
+    for (const item of evolutionData[i].chain.evolves_to) {
+      if (count < 3) {
+        evolutionList.push(item.species.name);
+        count++;
+      } else {
+        break;
+      }
+    }
+
     const pStats = new pokemonStats(
       pokemonData[i].stats[0].base_stat,
       pokemonData[i].stats[1].base_stat,
@@ -55,6 +67,7 @@ export function createPokemonCard(pokemonData, speciesData) {
       eggGroup,
       typeClass,
       abilities,
+      evolutionList,
       pStats
     );
 
@@ -111,6 +124,7 @@ function PokemonCard(
   eggGroup,
   typeClass,
   abilities,
+  evolutionList,
   pStats
 ) {
   const _id = id;
@@ -122,6 +136,7 @@ function PokemonCard(
   const _eggGroup = eggGroup;
   const _typeClass = typeClass;
   const _abilities = abilities;
+  const _evolutionList = evolutionList;
   const stats = pStats;
 
   return {
@@ -151,6 +166,9 @@ function PokemonCard(
     },
     getAbilities() {
       return _abilities;
+    },
+    getEvolutionList() {
+      return _evolutionList;
     },
     stats,
   };

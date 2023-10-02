@@ -10,7 +10,9 @@ import {
   randomHeroBuilder,
   PokemonViewBuilder,
 } from "./html-builder/htmlBuilder";
-import "./style.css";
+
+import "./styles/style.css";
+import "./styles/view-styles.css";
 
 const app = document.getElementById("app");
 
@@ -27,7 +29,7 @@ async function main() {
     pokeListData.results,
     "url"
   );
-  //console.log(pokeListDetails);
+  console.log(pokeListDetails);
 
   const pokeSpeciesData = await fetchDataDoubleParam(
     pokeListDetails.results,
@@ -42,11 +44,12 @@ async function main() {
     "url"
   );
 
-  //console.log(pokeEvolutionData);
+  console.log(pokeEvolutionData);
 
   const pokemonCardList = createPokemonCard(
     pokeListDetails.results,
-    pokeSpeciesData.results
+    pokeSpeciesData.results,
+    pokeEvolutionData.results
   );
 
   randomHeroBuilder(app, pokemonCardList, pokemonView);

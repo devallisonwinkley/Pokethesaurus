@@ -1,6 +1,6 @@
 import { fetchData } from "../helpers/fetchData";
 
-function cardBuilder(obj, view) {
+function cardBuilder(obj, pokemonList, view) {
   const card = document.createElement("article");
   const cardHeader = document.createElement("section");
   const cardBody = document.createElement("section");
@@ -58,7 +58,7 @@ function cardBuilder(obj, view) {
 
   card.addEventListener("click", function () {
     console.log("click");
-    view.updateView(obj);
+    view.updateView(obj, pokemonList);
   });
 
   return card;
@@ -84,7 +84,9 @@ function categoryBuilder(value, obj, view) {
     if (!selectedID.includes(randomNumber)) {
       for (const item of obj[randomNumber].getType()) {
         if (item === value) {
-          categoryDisplay.appendChild(cardBuilder(obj[randomNumber], view));
+          categoryDisplay.appendChild(
+            cardBuilder(obj[randomNumber], obj, view)
+          );
           console.log("card created");
           selectedID.push(randomNumber);
         }
@@ -157,7 +159,7 @@ export function headerBuilder(obj, view) {
             searchList.appendChild(itemList);
 
             itemList.addEventListener("click", function () {
-              view.updateView(pokemon);
+              view.updateView(pokemon, pokemonList);
             });
 
             counter += 1;
@@ -174,7 +176,7 @@ export function headerBuilder(obj, view) {
   return headerContainer;
 }
 
-function heroBuilder(obj, view) {
+function heroBuilder(obj, index, view) {
   const hero = document.createElement("div");
   const divLeft = document.createElement("div");
   const featured = document.createElement("h1");
@@ -198,16 +200,15 @@ function heroBuilder(obj, view) {
   description.className = "hero-description";
 
   featured.textContent = "Featured Legendary:";
-  PokemonName.textContent = obj.getName();
-  PokemonID.textContent = "#" + obj.getID();
-  heroImg.src = obj.getImage();
-  description.textContent = obj.getDescription();
-  imgFooter.src = obj.getSpriteImage();
+  PokemonName.textContent = obj[index].getName();
+  PokemonID.textContent = "#" + obj[index].getID();
+  heroImg.src = obj[index].getImage();
+  description.textContent = obj[index].getDescription();
+  imgFooter.src = obj[index].getSpriteImage();
   footerLink.textContent = "See more . . .";
 
-  obj.getAbilities().forEach(async (element, i) => {
+  obj[index].getAbilities().forEach(async (element, i) => {
     const abilityData = await fetchData(element[1]);
-    console.log(abilityData);
 
     const abilityContainer = document.createElement("div");
     abilityContainer.className = "ability-container";
@@ -215,15 +216,18 @@ function heroBuilder(obj, view) {
     const abilityDescription = document.createElement("p");
 
     abilityName.textContent = "Ability " + (i + 1) + ": " + element[0];
-    abilityDescription.textContent =
-      abilityData.flavor_text_entries[0].flavor_text;
+    for (const ability of abilityData.flavor_text_entries) {
+      if (ability.language.name === "en") {
+        abilityDescription.textContent = ability.flavor_text;
+
+        break;
+      }
+    }
 
     abilityContainer.appendChild(abilityName);
     abilityContainer.appendChild(abilityDescription);
     divRight.appendChild(abilityContainer);
   });
-
-  console.log(obj.stats);
 
   divImg.appendChild(heroImg);
 
@@ -245,7 +249,7 @@ function heroBuilder(obj, view) {
   hero.appendChild(divRight);
 
   footerLink.addEventListener("click", function () {
-    view.updateView(obj);
+    view.updateView(obj[index], obj);
   });
 
   return hero;
@@ -258,7 +262,7 @@ export function randomHeroBuilder(app, obj, view) {
 
   for (let i = obj.length - 1; i > 142; i--) {
     if (obj[i].getID() == legendaries[randomLegend]) {
-      app.appendChild(heroBuilder(obj[i], view));
+      app.appendChild(heroBuilder(obj, i, view));
       break;
     }
   }
@@ -268,8 +272,9 @@ export function PokemonViewBuilder() {
   const pokemonView = document.createElement("div");
   const viewFilter = document.createElement("div");
   const viewDisplay = document.createElement("div");
+
   const rightDisplay = document.createElement("div");
-  const viewGroup = document.createElement("div");
+  const rightViewHeader = document.createElement("div");
   const imgGroup = document.createElement("img");
   const containerGroup = document.createElement("div");
   const viewStats = document.createElement("div");
@@ -281,29 +286,36 @@ export function PokemonViewBuilder() {
   const specialDefense = document.createElement("p");
   const speed = document.createElement("p");
   const viewAbility = document.createElement("div");
+
   const leftDisplay = document.createElement("div");
   const pokemonName = document.createElement("p");
   const viewMainDisplay = document.createElement("div");
   const imgMain = document.createElement("img");
   const viewType = document.createElement("div");
+  const viewEvolve = document.createElement("div");
+  const evolveInto = document.createElement("p");
+  const evolveList = document.createElement("div");
 
   const description = document.createElement("p");
 
   rightDisplay.className = "left-view";
   pokemonView.className = "view-container";
   viewFilter.className = "view-filter";
-  viewGroup.className = "view-group-container";
-  containerGroup.className = "group-container";
+  rightViewHeader.className = "right-view-header";
+  containerGroup.className = "view-group-container";
   viewDisplay.className = "view-display-container";
   viewStats.className = "view-stats";
   stats.className = "stat-title";
 
   leftDisplay.className = "right-view";
   viewMainDisplay.className = "view-main";
+  viewEvolve.className = "view-evolution";
+  evolveList.className = "view-evolution-list";
+  viewType.className = "view-type-container";
   description.className = "view-description";
 
-  viewGroup.appendChild(imgGroup);
-  viewGroup.appendChild(containerGroup);
+  rightViewHeader.appendChild(imgGroup);
+  rightViewHeader.appendChild(containerGroup);
 
   viewStats.appendChild(stats);
   viewStats.appendChild(hp);
@@ -313,15 +325,19 @@ export function PokemonViewBuilder() {
   viewStats.appendChild(specialDefense);
   viewStats.appendChild(speed);
 
-  rightDisplay.appendChild(viewGroup);
+  rightDisplay.appendChild(rightViewHeader);
   rightDisplay.appendChild(viewStats);
   rightDisplay.appendChild(viewAbility);
 
   viewMainDisplay.appendChild(imgMain);
   viewMainDisplay.appendChild(viewType);
 
+  viewEvolve.appendChild(evolveInto);
+  viewEvolve.appendChild(evolveList);
+
   leftDisplay.appendChild(pokemonName);
   leftDisplay.appendChild(viewMainDisplay);
+  leftDisplay.appendChild(viewEvolve);
 
   viewDisplay.appendChild(leftDisplay);
   viewDisplay.appendChild(rightDisplay);
@@ -329,6 +345,8 @@ export function PokemonViewBuilder() {
 
   pokemonView.appendChild(viewFilter);
   pokemonView.appendChild(viewDisplay);
+
+  evolveInto.textContent = "Evolve into: ";
 
   stats.textContent = "Stats";
   hp.textContent = "HP: 0";
@@ -338,7 +356,7 @@ export function PokemonViewBuilder() {
   specialDefense.textContent = "SD: 0";
   speed.textContent = "Speed: 0";
 
-  const updateView = (obj) => {
+  const updateView = (obj, pokemonList) => {
     pokemonView.style.display = "block";
     pokemonName.textContent = "# " + obj.getID() + ": " + obj.getName();
 
@@ -349,21 +367,47 @@ export function PokemonViewBuilder() {
     }
     for (const item of obj.getType()) {
       const group = document.createElement("p");
-      group.className = "type-group " + item;
+      group.className = "view-type-list " + item;
       group.textContent = item;
       viewType.appendChild(group);
+    }
+    while (evolveList.firstChild) {
+      evolveList.removeChild(evolveList.firstChild);
+    }
+    console.log(obj.getEvolutionList());
+    console.log(obj.getEvolutionList().length);
+    if (obj.getEvolutionList().length > 0) {
+      obj.getEvolutionList().forEach((element) => {
+        for (const item of pokemonList) {
+          if (item.getName() === element) {
+            const evolveContainer = document.createElement("div");
+            evolveContainer.className = "evolve-item-container";
+            const evolveImg = document.createElement("img");
+            const evolveName = document.createElement("p");
+            evolveImg.src = item.getSpriteImage();
+            evolveName.textContent = element;
+            evolveContainer.appendChild(evolveImg);
+            evolveContainer.appendChild(evolveName);
+            evolveList.appendChild(evolveContainer);
+          }
+        }
+      });
+    } else {
+      const noEvolve = document.createElement("p");
+      noEvolve.textContent = "None";
+      evolveList.appendChild(noEvolve);
     }
 
     imgGroup.src = obj.getSpriteImage();
 
-    while (viewGroup.firstChild) {
-      viewGroup.removeChild(viewGroup.firstChild);
+    while (containerGroup.firstChild) {
+      containerGroup.removeChild(containerGroup.firstChild);
     }
     for (const item of obj.getGroup()) {
       const group = document.createElement("p");
-      group.className = "card-group " + item;
+      group.className = "view-group " + item;
       group.textContent = item;
-      viewGroup.appendChild(group);
+      containerGroup.appendChild(group);
     }
 
     hp.textContent = "HP: " + obj.stats.getHp();
@@ -381,13 +425,18 @@ export function PokemonViewBuilder() {
       console.log(abilityData);
 
       const abilityContainer = document.createElement("div");
-      abilityContainer.className = "ability-container";
+      abilityContainer.className = "view-ability-container";
       const abilityName = document.createElement("p");
       const abilityDescription = document.createElement("p");
 
       abilityName.textContent = "Ability " + (i + 1) + ": " + element[0];
-      abilityDescription.textContent =
-        abilityData.flavor_text_entries[0].flavor_text;
+      for (const ability of abilityData.flavor_text_entries) {
+        if (ability.language.name === "en") {
+          abilityDescription.textContent = ability.flavor_text;
+
+          break;
+        }
+      }
 
       abilityContainer.appendChild(abilityName);
       abilityContainer.appendChild(abilityDescription);
