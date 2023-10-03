@@ -29,7 +29,7 @@ async function main() {
     pokeListData.results,
     "url"
   );
-  console.log(pokeListDetails);
+  //console.log(pokeListDetails);
 
   const pokeSpeciesData = await fetchDataDoubleParam(
     pokeListDetails.results,

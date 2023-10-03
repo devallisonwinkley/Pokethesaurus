@@ -37,9 +37,18 @@ export function createPokemonCard(pokemonData, speciesData, evolutionData) {
       }
     }
 
+    let evolutionSpecies = evolutionData[i].chain;
+    console.log(evolutionSpecies.species.name + ": " + pokemonData[i].id);
+    while (
+      evolutionSpecies.evolves_to.length > 0 &&
+      evolutionSpecies.species.name != pokemonData[i].name
+    ) {
+      evolutionSpecies = evolutionSpecies.evolves_to[0];
+    }
+
     const evolutionList = [];
     let count = 0;
-    for (const item of evolutionData[i].chain.evolves_to) {
+    for (const item of evolutionSpecies.evolves_to) {
       if (count < 3) {
         evolutionList.push(item.species.name);
         count++;

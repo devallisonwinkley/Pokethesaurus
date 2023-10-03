@@ -422,7 +422,7 @@ export function PokemonViewBuilder() {
     }
     obj.getAbilities().forEach(async (element, i) => {
       const abilityData = await fetchData(element[1]);
-      console.log(abilityData);
+      //console.log(abilityData);
 
       const abilityContainer = document.createElement("div");
       abilityContainer.className = "view-ability-container";
