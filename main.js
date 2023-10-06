@@ -12,6 +12,7 @@ import {
 } from "./html-builder/htmlBuilder";
 
 import "./styles/style.css";
+import "./styles/hero-section-styles.css";
 import "./styles/view-styles.css";
 
 const app = document.getElementById("app");
