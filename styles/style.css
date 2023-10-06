@@ -42,7 +42,7 @@ body {
 .app {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   gap: 40px;
 

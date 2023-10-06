@@ -213,6 +213,7 @@ function heroBuilder(obj, index, view) {
     const abilityContainer = document.createElement("div");
     abilityContainer.className = "ability-container";
     const abilityName = document.createElement("p");
+    abilityName.className = "hero-ability-name";
     const abilityDescription = document.createElement("p");
 
     abilityName.textContent = "Ability " + (i + 1) + ": " + element[0];
@@ -242,7 +243,6 @@ function heroBuilder(obj, index, view) {
 
   divRight.appendChild(headerDiv);
   divRight.appendChild(description);
-
   divRight.appendChild(footer);
 
   hero.appendChild(divLeft);
