@@ -5,7 +5,6 @@
   width: 260px;
   max-width: 260px;
   height: 400px;
-  min-height: 400px;
   background-color: azure;
   cursor: pointer;
 
@@ -145,6 +144,9 @@ p {
   }
   .category-section {
     text-align: center;
+  }
+  .card-container {
+    width: 29.7%;
   }
 }
 
