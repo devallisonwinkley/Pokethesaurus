@@ -48,7 +48,6 @@ body {
 
   overflow: hidden;
   width: 100%;
-  background-color: red;
 }
 
 .card-container {
@@ -340,17 +339,12 @@ input:focus {
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .header-container {
-    max-width: 400px;
-    text-align: center;
-    align-items: center;
+    width: 370px;
   }
   .header-logo {
-    right: -60px;
-  }
-  input {
-    display: flex;
-    justify-content: center;
-    align-self: center;
+    position: relative;
+    top: 3px;
+    right: -2px;
   }
 }
 
