@@ -25,7 +25,6 @@
 }
 
 .hero-left-container h1 {
-  width: 100dw;
   padding: 20px;
   background-color: #b0c4de;
   margin: 10px 12px -10px 12px;
@@ -136,12 +135,16 @@
   }
 
   .hero-left-container h1 {
+    height: 50px;
+  }
+
+  .hero-left-container h1 {
     font-size: 12px;
     font-weight: bold;
   }
   .hero-header {
     width: 150px;
-    height: 65px;
+    height: 50px;
   }
   .hero-right-container {
     min-width: 170px;
