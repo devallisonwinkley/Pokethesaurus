@@ -14,6 +14,7 @@ import {
 import "./styles/style.css";
 import "./styles/hero-section-styles.css";
 import "./styles/view-styles.css";
+import "./styles/category-styles.css";
 
 const app = document.getElementById("app");
 
