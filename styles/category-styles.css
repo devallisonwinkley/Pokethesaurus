@@ -100,7 +100,6 @@ p {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: red;
 }
 
 .category-section:first-of-type {
