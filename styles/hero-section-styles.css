@@ -114,7 +114,7 @@
   .hero-container {
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 12px;
     gap: 10px;
 
     width: calc(100vw - 20px);
@@ -174,27 +174,77 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+  .hero-container {
+    margin-bottom: -30px;
+    height: 100%;
+  }
+  .hero-left-container {
+    width: 100%;
+    height: 230px;
+  }
+
+  .hero-left-container h1 {
+    height: 30px;
+    font-size: 18px;
+    justify-content: center;
+  }
+
+  .hero-image-container {
+    height: 65%;
+  }
+
+  .hero-header {
+    height: 30px;
+  }
+  .hero-right-container {
+    height: 100%;
+  }
+  .hero-right-container h1 {
+    font-size: 15px;
+    width: 19px;
+  }
+  .hero-right-container p {
+    font-size: 12px;
+    margin-top: -30px;
+  }
+  .ability-container p {
+    font-size: 10px;
+    width: 100%;
+    margin-top: 23px;
+  }
+  .hero-footer-container {
+    width: 300px;
+    margin-top: 5px;
+  }
+  .hero-footer-container P {
+    font-size: 13px;
+    margin-top: -5px;
+    margin-right: 50px;
+    min-width: 80px;
+  }
+  .hero-footer-container img {
+    width: 65px;
+    margin-top: -10px;
+    margin-right: -20px;
+  }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
+/* Devices 600px and up
 @media only screen and (min-width: 600px) {
-  ...;
 }
+*/
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  ...;
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
+/* Devices 992px and up)
 @media only screen and (min-width: 992px) {
 }
+ */
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* Extra large devices 1200px and up */
 @media only screen and (min-width: 601px) and (max-width: 1200px) {
   .hero-container {
     display: flex;
     flex-direction: row;
+    margin-top: 87px;
     padding: 10px;
     gap: 10px;
     height: 400px;
