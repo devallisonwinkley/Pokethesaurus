@@ -121,17 +121,24 @@ p {
 @media only screen and (max-width: 600px) {
   .category-content {
     max-width: 350px;
-    /* width: 100%; */
     display: flex;
     overflow-x: scroll;
     overflow-y: hidden;
   }
   .card-container {
-    padding: 10px;
-    min-width: 300px;
+    padding: 8px;
+    min-width: 210px;
+    max-height: 300px;
+  }
+  .type-group {
+    width: 100%;
   }
   .card-footer {
-    white-space: normal;
+    height: 10px;
+    font-size: 12px;
+  }
+  .card-group {
+    min-width: 50px;
   }
 }
 
