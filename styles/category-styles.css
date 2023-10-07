@@ -120,14 +120,15 @@ p {
 /* Devices 600px and down */
 @media only screen and (max-width: 600px) {
   .category-content {
-    max-width: 365px;
-    min-width: 365px;
+    max-width: 350px;
+    /* width: 100%; */
     display: flex;
     overflow-x: scroll;
     overflow-y: hidden;
   }
   .card-container {
     padding: 10px;
+    min-width: 300px;
   }
   .card-footer {
     white-space: normal;
