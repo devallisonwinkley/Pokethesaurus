@@ -160,6 +160,8 @@ export function headerBuilder(obj, view) {
 
             itemList.addEventListener("click", function () {
               view.updateView(pokemon, pokemonList);
+              searchView.style.display = "none";
+              searchBar.value = "";
             });
 
             counter += 1;
