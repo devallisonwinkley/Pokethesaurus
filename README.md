@@ -6,6 +6,8 @@ Pokéthesaurus is similar to PokeDex, wherein you are able to view each Pokémon
 
 Enjoy!
 
+VIEW LIVE SITE HERE: https://devallisonwinkley.github.io/Pokethesaurus/
+
 ## Members
 
 - Mark David Panganiban
