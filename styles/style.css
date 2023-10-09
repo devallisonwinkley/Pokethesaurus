@@ -26,10 +26,8 @@ body {
   max-height: 70px;
 
   position: fixed;
-  top: 0;
+  top: -9px;
   left: 0;
-
-  background-color: transparent;
 }
 
 .header-logo {

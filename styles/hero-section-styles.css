@@ -2,9 +2,9 @@
   display: grid;
   grid-template-columns: 640px 1fr;
 
-  width: 1400px;
-  height: 640px;
-  margin-top: 80px;
+  width: 1450px;
+  height: 100%;
+  margin-top: 65px;
   padding: 20px;
   background-color: #d1cfc8;
   border-radius: 20px;

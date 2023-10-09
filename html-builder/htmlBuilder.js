@@ -318,11 +318,11 @@ export function PokemonViewBuilder() {
   description.className = "view-description";
 
   btnClose.textContent = "X";
-  btnClose.style.position = "absolute";
-  btnClose.style.top = "10px";
-  btnClose.style.right = "20px";
-  btnClose.style.width = "80px";
-  btnClose.style.height = "60px";
+  // btnClose.style.position = "absolute";
+  // btnClose.style.top = "10px";
+  // btnClose.style.right = "20px";
+  // btnClose.style.width = "80px";
+  // btnClose.style.height = "60px";
   btnClose.style.fontSize = "16px";
   btnClose.style.zIndex = "2";
   btnClose.className = "btn-view-close";
