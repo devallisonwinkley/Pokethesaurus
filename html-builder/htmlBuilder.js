@@ -297,6 +297,7 @@ export function PokemonViewBuilder() {
   const viewEvolve = document.createElement("div");
   const evolveInto = document.createElement("p");
   const evolveList = document.createElement("div");
+  const btnClose = document.createElement("button");
 
   const description = document.createElement("p");
 
@@ -315,6 +316,16 @@ export function PokemonViewBuilder() {
   evolveList.className = "view-evolution-list";
   viewType.className = "view-type-container";
   description.className = "view-description";
+
+  btnClose.textContent = "X";
+  btnClose.style.position = "absolute";
+  btnClose.style.top = "10px";
+  btnClose.style.right = "20px";
+  btnClose.style.width = "80px";
+  btnClose.style.height = "60px";
+  btnClose.style.fontSize = "16px";
+  btnClose.style.zIndex = "2";
+  btnClose.className = "btn-view-close";
 
   rightViewHeader.appendChild(imgGroup);
   rightViewHeader.appendChild(containerGroup);
@@ -347,6 +358,7 @@ export function PokemonViewBuilder() {
 
   pokemonView.appendChild(viewFilter);
   pokemonView.appendChild(viewDisplay);
+  pokemonView.appendChild(btnClose);
 
   evolveInto.textContent = "Evolve into: ";
 
@@ -357,6 +369,14 @@ export function PokemonViewBuilder() {
   specialAttack.textContent = "SP: 0";
   specialDefense.textContent = "SD: 0";
   speed.textContent = "Speed: 0";
+
+  const closeView = () => {
+    pokemonView.style.display = "none";
+  };
+
+  btnClose.addEventListener("click", () => {
+    closeView();
+  });
 
   const updateView = (obj, pokemonList) => {
     pokemonView.style.display = "block";
