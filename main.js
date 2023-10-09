@@ -9,6 +9,7 @@ import {
   randomCategoryBuilder,
   randomHeroBuilder,
   PokemonViewBuilder,
+  returnTop,
 } from "./html-builder/htmlBuilder";
 
 import "./styles/style.css";
@@ -66,6 +67,8 @@ async function main() {
   randomCategoryBuilder(app, pokemonCardList, pokemonView);
 
   //pokemonView.updateView(pokemonCardList[3]);
+
+  app.appendChild(returnTop());
 }
 
 main();

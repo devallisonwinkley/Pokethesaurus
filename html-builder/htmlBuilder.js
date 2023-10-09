@@ -110,11 +110,7 @@ export function headerBuilder(obj, view) {
   searchBar.type = "text";
   searchBar.placeholder = "Find your Pokémon!";
 
-<<<<<<< HEAD
   imgLogo.src = mpLogo;
-=======
-  imgLogo.src = "public/mp2-logo.png";
->>>>>>> 1aca0e766b63ecedb13fe67cb5a8c1fa8d090812
 
   searchTextContainer.appendChild(searchBar);
 
@@ -523,4 +519,20 @@ export function randomCategoryBuilder(app, obj, view) {
     app.appendChild(categoryBuilder(element, obj, view));
     console.log("category created");
   });
+}
+
+export function returnTop() {
+  const returnTop = document.createElement("p");
+  returnTop.className = "return-top";
+  returnTop.innerText = "⬆";
+
+  returnTop.addEventListener("click", () => {
+    // Scroll to the top of the page smoothly
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Use smooth scrolling for a smooth transition
+    });
+  });
+
+  return returnTop;
 }

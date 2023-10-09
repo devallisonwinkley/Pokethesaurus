@@ -221,6 +221,25 @@ input:focus {
   font-weight: bold;
 }
 
+.return-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: #272727;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  background-color: #d7dce0;
+  text-align: center;
+
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
 /* MEDIA QUERY SIZES */
 
 /* Devices 600px and down */
