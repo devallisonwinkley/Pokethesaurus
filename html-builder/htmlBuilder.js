@@ -527,10 +527,9 @@ export function returnTop() {
   returnTop.innerText = "⬆";
 
   returnTop.addEventListener("click", () => {
-    // Scroll to the top of the page smoothly
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // Use smooth scrolling for a smooth transition
+      behavior: "smooth",
     });
   });
 
