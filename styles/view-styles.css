@@ -190,30 +190,92 @@
   text-align: center;
   padding: 10px 20px 10px 20px;
   font-size: 22px;
+  background-color: magenta;
 }
 
 /* MEDIA QUERY SIZES */
 
-/* Extra small devices (phones, 600px and down) */
+/* Devices 600px and down */
 @media only screen and (max-width: 600px) {
+  .view-display-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 375px;
+    height: 800px;
+  }
+  .right-view {
+    width: 100%;
+    background-color: #f0ffff;
+    height: 85%;
+
+    margin-bottom: -15px;
+  }
+
+  .right-view p {
+    font-size: 18px;
+  }
+  .view-main {
+    margin-top: -60px;
+  }
+  .view-main img {
+    width: 150px;
+    margin-left: 10px;
+  }
+  .view-evolution {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+  .view-evolution p {
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: -20px;
+  }
+  .left-view {
+    background-color: #f8f8a5;
+  }
+  .left-view img {
+    margin-left: 45px;
+  }
+  .left-view p {
+    width: 100%;
+    margin-right: 20px;
+  }
+  .view-stats {
+    margin: -30px 10px -20px 40px;
+  }
+  .stat-title {
+    font-size: 16px;
+    font-weight: lighter;
+  }
+  .view-stats p {
+    font-size: 13.5px;
+  }
+  .view-ability-container {
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+  .view-description {
+    background-color: #b0c4de;
+    font-size: 20px;
+    padding: 25px;
+  }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
+/* Devices 600px and up */
 @media only screen and (min-width: 600px) {
-  ...;
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  ...;
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
+/* Devices 992px and up) 
 @media only screen and (min-width: 992px) {
-  ...;
 }
+*/
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  ...;
+/* Devices 1200px and up */
+@media only screen and (max-width: 1200px) {
 }

@@ -223,6 +223,8 @@ input:focus {
   font-weight: bold;
 }
 
+/* MEDIA QUERY SIZES */
+
 /* Devices 600px and down */
 @media only screen and (max-width: 600px) {
   .header-logo {
