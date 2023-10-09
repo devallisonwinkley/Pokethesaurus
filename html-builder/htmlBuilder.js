@@ -1,4 +1,5 @@
 import { fetchData } from "../helpers/fetchData";
+import mpLogo from "../public/mp2-logo.png";
 
 function cardBuilder(obj, pokemonList, view) {
   const card = document.createElement("article");
@@ -109,7 +110,7 @@ export function headerBuilder(obj, view) {
   searchBar.type = "text";
   searchBar.placeholder = "Find your Pokémon!";
 
-  imgLogo.src = "/mp2-logo.png";
+  imgLogo.src = mpLogo;
 
   searchTextContainer.appendChild(searchBar);
 
