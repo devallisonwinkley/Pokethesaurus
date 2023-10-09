@@ -110,11 +110,7 @@ export function headerBuilder(obj, view) {
   searchBar.type = "text";
   searchBar.placeholder = "Find your Pokémon!";
 
-<<<<<<< HEAD
   imgLogo.src = mpLogo;
-=======
-  imgLogo.src = "public/mp2-logo.png";
->>>>>>> 1aca0e766b63ecedb13fe67cb5a8c1fa8d090812
 
   searchTextContainer.appendChild(searchBar);
 
